@@ -88,7 +88,9 @@ limpiar_tmp() {
     local count=0
 
     while IFS= read -r archivo; do
-        rm -f "$archivo" && ((count++)) || true
+    if rm -f "$archivo"; then
+        ((count++))
+    fi
     done < <(find "$TMP_DIR" -maxdepth 1 -type f)
 
     log " /tmp: ${count} archivo(s) eliminado(s)."
