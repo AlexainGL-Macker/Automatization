@@ -47,6 +47,7 @@ cargar_env() {
 log() {
     local FECHA_HORA
     FECHA_HORA=$(date '+%Y-%m-%d %H:%M:%S')
+    # shellcheck disable=SC2155
     local LOG_HOY="${LOG_BASE}_$(date '+%Y-%m-%d').log"
 
     echo "[${FECHA_HORA}] $1" | tee -a "$LOG_HOY"
